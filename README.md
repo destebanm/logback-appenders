@@ -8,6 +8,7 @@ Requirements:
  - Amazon IAM user with 'CloudWatchLogsFullAccess' (arn:aws:iam::aws:policy/CloudWatchLogsFullAccess) policy
 
 Usage:
+
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
@@ -29,8 +30,9 @@ Usage:
 ```
 
 Properties:
+
 | Property      | Required  | Description                                        |
-|:--------------|:---------:|:---------------------------------------------------|
+| :------------ | :-------: | :------------------------------------------------- |
 | awsAccessKey  | yes       | AWS access key                                     |
 | awsSecretKey  | yes       | AWS secret key                                     |
 | awsRegionName | no        | CloudWatch region name. Default: US_WEST_2         |

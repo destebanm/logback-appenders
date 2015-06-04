@@ -8,6 +8,20 @@
 
 	<name>Logback Appenders</name>
 
+	<scm>
+		<connection>scm:git:https://github.com/Bankmonitor/logback-appenders.git</connection>
+		<developerConnection>scm:git:git@github.com:Bankmonitor/logback-appenders.git</developerConnection>
+		<url>https://github.com/Bankmonitor/logback-appenders</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>bintray</id>
+			<url>https://api.bintray.com/maven/bankmonitor/hu.bankmonitor.commons/logback-appenders</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,7 +43,7 @@
 			<artifactId>aws-java-sdk-logs</artifactId>
 			<version>${aws-java-sdk.version}</version>
 		</dependency>
-		
+
 		<!-- PROVIDED -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -61,7 +75,49 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

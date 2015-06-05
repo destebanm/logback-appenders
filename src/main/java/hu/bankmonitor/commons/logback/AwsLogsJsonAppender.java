@@ -16,19 +16,18 @@ import com.amazonaws.services.logs.model.PutLogEventsRequest;
 import com.amazonaws.services.logs.model.PutLogEventsResult;
 import com.amazonaws.services.logs.model.ResourceAlreadyExistsException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Setter
 public class AwsLogsJsonAppender extends AppenderBase<ILoggingEvent> {
 
-	private final ObjectMapper om = new ObjectMapper();
+	private final ObjectMapper om;
 
 	private AWSLogsClient awsLogsClient;
 
@@ -43,6 +42,12 @@ public class AwsLogsJsonAppender extends AppenderBase<ILoggingEvent> {
 	private String logGroupName = "test-log-group";
 
 	private String logStreamName = "test-log-stream";
+
+	public AwsLogsJsonAppender() {
+
+		om = new ObjectMapper();
+		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+	}
 
 	@Override
 	public void start() {

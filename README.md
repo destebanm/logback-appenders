@@ -1,13 +1,62 @@
-#Logback appenders for AWS
+# Logback appenders for AWS
 
 ## AwsLogsAppender
 
 Send logs to Amazon CloudWatch Logs.
 
-Requirements:
+### Requirements:
  - Amazon IAM user with 'CloudWatchLogsFullAccess' (arn:aws:iam::aws:policy/CloudWatchLogsFullAccess) policy
 
-Usage:
+### Downlaod: [ ![Download](https://api.bintray.com/packages/bankmonitor/hu.bankmonitor.commons/logback-appenders/images/download.svg) ](https://bintray.com/bankmonitor/hu.bankmonitor.commons/logback-appenders/_latestVersion)
+
+### Maven:
+
+``` xml
+<repositories>
+	<repository>
+		<id>bintray-bankmonitor-hu.bankmonitor.commons</id>
+		<name>bintray</name>
+		<url>http://dl.bintray.com/bankmonitor/hu.bankmonitor.commons</url>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+	</repository>
+</repositories>
+
+<dependencies>
+	<dependency>
+		<groupId>hu.bankmonitor.commons</groupId>
+		<artifactId>logback-appenders</artifactId>
+		<version>0.0.2</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>commons-logging</artifactId>
+				<groupId>commons-logging</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+</dependencies>
+```
+
+If you use [jcl-over-slf4j](http://www.slf4j.org/legacy.html) then exclude `commons-logging`:
+
+``` xml
+<dependencies>
+	<dependency>
+		<groupId>hu.bankmonitor.commons</groupId>
+		<artifactId>logback-appenders</artifactId>
+		<version>0.0.2</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>commons-logging</artifactId>
+				<groupId>commons-logging</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+</dependencies>
+```
+
+### Usage:
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -29,7 +78,7 @@ Usage:
 </configuration>
 ```
 
-Properties:
+#### Properties:
 
 | Property      | Required  | Description                                        |
 | :------------ | :-------: | :------------------------------------------------- |

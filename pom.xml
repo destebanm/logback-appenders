@@ -33,6 +33,7 @@
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 
 		<aws-java-sdk.version>1.9.40</aws-java-sdk.version>
+		<jackson.version>2.5.1</jackson.version>
 		<logback.version>1.1.3</logback.version>
 		<lombok.version>1.16.4</lombok.version>
 	</properties>
@@ -52,6 +53,13 @@
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-logs</artifactId>
 			<version>${aws-java-sdk.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
 		</dependency>
 
 		<!-- PROVIDED -->

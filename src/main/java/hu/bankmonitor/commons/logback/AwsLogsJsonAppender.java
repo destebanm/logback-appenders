@@ -47,6 +47,7 @@ public class AwsLogsJsonAppender extends AppenderBase<ILoggingEvent> {
 
 		om = new ObjectMapper();
 		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		JacksonUtils.registerModulesToObjectMapper(om);
 	}
 
 	@Override

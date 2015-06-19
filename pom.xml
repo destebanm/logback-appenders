@@ -4,7 +4,7 @@
 
 	<groupId>hu.bankmonitor.commons</groupId>
 	<artifactId>logback-appenders</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 
 	<name>Logback Appenders</name>
 
@@ -12,7 +12,7 @@
 		<connection>scm:git:https://github.com/Bankmonitor/logback-appenders.git</connection>
 		<developerConnection>scm:git:git@github.com:Bankmonitor/logback-appenders.git</developerConnection>
 		<url>https://github.com/Bankmonitor/logback-appenders</url>
-		<tag>HEAD</tag>
+		<tag>0.0.4</tag>
 	</scm>
 
 	<distributionManagement>

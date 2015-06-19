@@ -27,7 +27,7 @@ Send logs to Amazon CloudWatch Logs.
 	<dependency>
 		<groupId>hu.bankmonitor.commons</groupId>
 		<artifactId>logback-appenders</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 		<exclusions>
 			<exclusion>
 				<artifactId>commons-logging</artifactId>
@@ -45,7 +45,7 @@ If you use [jcl-over-slf4j](http://www.slf4j.org/legacy.html) then exclude `comm
 	<dependency>
 		<groupId>hu.bankmonitor.commons</groupId>
 		<artifactId>logback-appenders</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 		<exclusions>
 			<exclusion>
 				<artifactId>commons-logging</artifactId>

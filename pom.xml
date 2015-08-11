@@ -4,7 +4,7 @@
 
 	<groupId>hu.bankmonitor.commons</groupId>
 	<artifactId>logback-appenders</artifactId>
-	<version>0.0.8-SNAPSHOT</version>
+	<version>0.0.7-SNAPSHOT</version>
 
 	<name>Logback Appenders</name>
 

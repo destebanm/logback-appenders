@@ -5,7 +5,7 @@
 Send logs to Amazon CloudWatch Logs.
 
 ### Requirements:
- - Amazon IAM user with 'CloudWatchLogsFullAccess' (arn:aws:iam::aws:policy/CloudWatchLogsFullAccess) policy
+ - Amazon IAM user or Instance Profile with 'CloudWatchLogsFullAccess' (arn:aws:iam::aws:policy/CloudWatchLogsFullAccess) policy
 
 ### Downlaod: [ ![Download](https://api.bintray.com/packages/bankmonitor/hu.bankmonitor.commons/logback-appenders/images/download.svg) ](https://bintray.com/bankmonitor/hu.bankmonitor.commons/logback-appenders/_latestVersion)
 
@@ -27,13 +27,7 @@ Send logs to Amazon CloudWatch Logs.
 	<dependency>
 		<groupId>hu.bankmonitor.commons</groupId>
 		<artifactId>logback-appenders</artifactId>
-		<version>0.0.8</version>
-		<exclusions>
-			<exclusion>
-				<artifactId>commons-logging</artifactId>
-				<groupId>commons-logging</groupId>
-			</exclusion>
-		</exclusions>
+		<version>0.1.0</version>
 	</dependency>
 </dependencies>
 ```
@@ -45,7 +39,7 @@ If you use [jcl-over-slf4j](http://www.slf4j.org/legacy.html) then exclude `comm
 	<dependency>
 		<groupId>hu.bankmonitor.commons</groupId>
 		<artifactId>logback-appenders</artifactId>
-		<version>0.0.8</version>
+		<version>0.1.0</version>
 		<exclusions>
 			<exclusion>
 				<artifactId>commons-logging</artifactId>
@@ -80,10 +74,10 @@ If you use [jcl-over-slf4j](http://www.slf4j.org/legacy.html) then exclude `comm
 
 #### Properties:
 
-| Property      | Required  | Description                                        |
-| :------------ | :-------: | :------------------------------------------------- |
-| awsAccessKey  | yes       | AWS access key                                     |
-| awsSecretKey  | yes       | AWS secret key                                     |
-| awsRegionName | no        | CloudWatch region name. Default: US_WEST_2         |
-| logGroupName  | no        | CloudWatch log group name. Default: log-group-name |
-| logStreamName | no        | CloudWatch stream name. Default: log-stream-name   |
+| Property      | Required  | Description                                                                   |
+| :------------ | :-------: | :---------------------------------------------------------------------------- |
+| awsAccessKey  | no        | AWS access key (if missing the appender will use the Instance Profile)        |
+| awsSecretKey  | no        | AWS secret access key (if missing the appender will use the Instance Profile) |
+| awsRegionName | no        | CloudWatch region name. Default: US_WEST_2                                    |
+| logGroupName  | no        | CloudWatch log group name. Default: log-group-name                            |
+| logStreamName | no        | CloudWatch stream name. Default: log-stream-name                              |

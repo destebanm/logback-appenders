@@ -2,8 +2,9 @@ package hu.bankmonitor.commons.logback;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
-
+import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.internal.StaticCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
@@ -15,13 +16,12 @@ import com.amazonaws.services.logs.model.InvalidSequenceTokenException;
 import com.amazonaws.services.logs.model.PutLogEventsRequest;
 import com.amazonaws.services.logs.model.PutLogEventsResult;
 import com.amazonaws.services.logs.model.ResourceAlreadyExistsException;
+import com.amazonaws.util.StringUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
 import lombok.Setter;
 
 @Setter
@@ -53,7 +53,7 @@ public class AwsLogsJsonAppender extends AppenderBase<ILoggingEvent> {
 	@Override
 	public void start() {
 
-		awsLogsClient = new AWSLogsClient(new StaticCredentialsProvider(new BasicAWSCredentials(awsAccessKey, awsSecretKey)));
+		awsLogsClient = new AWSLogsClient(getCredentialsProvider());
 		if (awsRegionName != null) {
 			awsLogsClient.setRegion(Region.getRegion(Regions.fromName(awsRegionName)));
 		}
@@ -79,6 +79,15 @@ public class AwsLogsJsonAppender extends AppenderBase<ILoggingEvent> {
 		}
 
 		super.start();
+	}
+
+	private AWSCredentialsProvider getCredentialsProvider() {
+
+		if (StringUtils.isNullOrEmpty(awsAccessKey) || StringUtils.isNullOrEmpty(awsSecretKey)) {
+			return new InstanceProfileCredentialsProvider();
+		}
+
+		return new StaticCredentialsProvider(new BasicAWSCredentials(awsAccessKey, awsSecretKey));
 	}
 
 	@Override

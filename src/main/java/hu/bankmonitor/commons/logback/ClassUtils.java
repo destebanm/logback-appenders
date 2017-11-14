@@ -2,6 +2,7 @@ package hu.bankmonitor.commons.logback;
 
 import lombok.experimental.UtilityClass;
 
+//Prueba jortizmartin
 @UtilityClass
 public final class ClassUtils {
 
